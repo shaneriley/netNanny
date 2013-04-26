@@ -1,0 +1,96 @@
+@import "mixins"
+
+body
+  font: normal 13px Helvetica, Arial, sans-serif
+  background: #f0f0f0
+
+h1
+  padding: 0 0 15px 0
+  font: normal italic 30px Georgia, serif
+  text-shadow: 1px 1px 1px #ffffff
+  +font-smoothing
+
+h2
+  padding: 0 0 15px 0
+  font: normal italic 18px Georgia, serif
+  text-shadow: 1px 1px 1px #ffffff
+  +font-smoothing
+
+p
+  padding: 0 0 30px 0
+  font-size: 14px
+  line-height: 160%
+
+pre
+  padding: 15px
+  margin: 0 0 25px 0
+  color: #424242
+  border: 1px dashed #2f6fab
+  background: #f9f9f9
+
+form
+  padding: 0 0 20px 0
+  h1
+    font-size: 24px
+    a
+      text-decoration: none
+      color: inherit
+  fieldset
+    display: none
+  input[type="text"], input[type="email"], input[type="password"], textarea
+    +input
+  textarea
+    height: 120px
+    padding: 7px
+  dt
+    padding: 0 0 5px 0
+  dd
+    padding: 0 0 15px 0
+    input[type="text"], input[type="email"], input[type="password"], textarea
+      margin: 0 0 5px 0
+  .select
+    display: inline-block
+    background: transparent url("/images/icon_dropdown.png") 100% 50% no-repeat
+    select
+      height: 36px
+      padding: 0 25px 0 8px
+      font: normal 12px Arial, Helvetica, sans-serif
+      color: #999999
+      border: 1px solid #f5f5f5
+      +gradient-bg(rgba(255, 255, 255, 0), #e5e5e5)
+      -webkit-appearance: none
+      -moz-appearance: none
+      appearance: none
+  label.checkbox
+    display: block
+    padding: 0 0 10px 0
+    input
+      margin: 0 3px 0 0
+  .card_info
+    padding: 0 0 25px 0
+    p
+      font-size: 14px
+      line-height: 130%
+      color: #5b5454
+      &.card
+        color: #000000
+      small
+        display: block
+        padding: 0 0 20px 0
+        font-size: 12px
+        color: #999999
+    a
+      color: #999999
+  fieldset.actions
+    input[type="submit"]
+      +button
+      padding: 8px 20px
+      margin: 0 5px 0 0
+      cursor: pointer
+    a
+      color: #999999
+
+#content
+  width: 800px
+  padding: 30px
+  margin: 0 auto

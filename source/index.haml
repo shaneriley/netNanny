@@ -1,0 +1,104 @@
+%h1 $.netNanny
+%p Filters out unwanted words and phrases present in form inputs before the form is submitted. By default, the plugin loads a list of words from a JSON file using Ajax, then compares that with the value of the inputs to monitor, which when called on a form element is every input[type=text] and textarea.
+%form#default(action="" method="post")
+  %h1= link_to "Censor entire form", "#"
+  %fieldset
+    %pre
+      %code
+        $("form#default").netNanny();
+    %dl
+      %dt
+        %label First Name
+      %dd
+        %input(type="text")
+      %dt
+        %label Last Name
+      %dd
+        %input(type="text")
+      %dt
+        %label Bio
+      %dd
+        %textarea(rows="8" cols="60")
+  %fieldset.actions
+    %input(type="submit" value="Save")
+
+%form#flowers(action="" method="post")
+  %h1= link_to "Censor entire form with flowers", "#"
+  %fieldset
+    %pre
+      %code
+        $("form#flowers").netNanny({ replacement_character: "\u2740" });
+    %dl
+      %dt
+        %label First Name
+      %dd
+        %input(type="text")
+      %dt
+        %label Last Name
+      %dd
+        %input(type="text")
+      %dt
+        %label Bio
+      %dd
+        %textarea(rows="8" cols="60")
+  %fieldset.actions
+    %input(type="submit" value="Save")
+
+%form#single(action="" method="post")
+  %h1= link_to "Censor single field", "#"
+  %fieldset
+    %pre
+      %code
+        $("form#single textarea").netNanny();
+    %dl
+      %dt
+        %label First Name
+      %dd
+        %input(type="text")
+      %dt
+        %label Last Name
+      %dd
+        %input(type="text")
+      %dt
+        %label Bio
+      %dd
+        %textarea(rows="8" cols="60")
+  %fieldset.actions
+    %input(type="submit" value="Save")
+
+%form#selectors(action="" method="post")
+  %h1= link_to "Censor all [type=text] selectors", "#"
+  %fieldset
+    %pre
+      %code
+        $("form#selectors").netNanny({ input_selectors: ["[type=text]"] });
+    %dl
+      %dt
+        %label First Name
+      %dd
+        %input(type="text")
+      %dt
+        %label Last Name
+      %dd
+        %input(type="text")
+      %dt
+        %label Bio
+      %dd
+        %textarea(rows="8" cols="60")
+  %fieldset.actions
+    %input(type="submit" value="Save")
+
+%h2 Other options:
+
+%pre
+  %code
+    :preserve
+      {
+        terms_path: "/path/to/profanity.json", // JSON file containing array of filtered words
+        terms_property: "words", // Property in JSON that contains array of filtered words
+        terms: [], // Supply your own array of terms. Overwritten if getTerms is not overridden
+        getTerms: function() { }, // Method used to get filtered word list. Assign this.terms to the
+                                  // array of words
+        furtherAction: function(boolean_offense_present, submit_event) { } // Optional method called
+                                  //after processing completed
+      }
